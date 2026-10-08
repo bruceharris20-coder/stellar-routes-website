@@ -71,3 +71,6 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 
 @media(max-width:1050px){.leadership-v42{grid-template-columns:1fr}.leader-v42{grid-template-columns:300px 1fr;min-height:440px}.leader-photo,.leader-v42 .portrait{min-height:440px}.polo-logo{width:150px}}
 @media(max-width:650px){.leader-v42{grid-template-columns:1fr;min-height:0}.leader-photo{min-height:0;height:440px}.leader-v42 .portrait{height:440px;min-height:0}.leader-bio{padding:24px}.polo-logo{width:145px;bottom:20px}.excursion-image{height:230px}}
+
+/* Launch V3: portraits already contain the embroidered Stellar Routes polo logo. */
+.polo-logo{display:none!important}
