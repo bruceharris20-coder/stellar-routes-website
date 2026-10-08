@@ -74,3 +74,16 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 
 /* Launch V3: portraits already contain the embroidered Stellar Routes polo logo. */
 .polo-logo{display:none!important}
+
+/* Launch V4: homepage feature images aligned consistently */
+.home-feature-grid{align-items:stretch}
+.home-feature-grid .card{display:flex;flex-direction:column;height:100%}
+.home-feature-image{position:relative;height:255px;overflow:hidden;background:#dfe8ee}
+.home-feature-image img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+.home-feature-grid .card:nth-child(2) .home-feature-image img{object-fit:cover!important;object-position:center 42%!important}
+.home-feature-image:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,rgba(2,19,33,.82));pointer-events:none}
+.home-feature-title{position:absolute;z-index:2;left:16px;right:16px;bottom:18px;text-align:center;color:#fff;font-size:24px;line-height:1.12;font-weight:900;text-shadow:0 2px 6px rgba(0,0,0,.5)}
+.home-feature-grid .card-body{display:flex;flex-direction:column;flex:1;padding:24px 26px}
+.home-feature-grid .card-body p{margin-top:0;flex:1}
+.home-feature-grid .card-body .btn{align-self:flex-start}
+@media(max-width:720px){.home-feature-image{height:240px}.home-feature-title{font-size:22px}}
