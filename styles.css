@@ -27,3 +27,28 @@ body:has(.page-hero h1) .grid{grid-auto-rows:auto}
 .leader-v42 .portrait{height:410px;object-fit:cover;object-position:center top}
 @media(max-width:900px){.leader-v42 .portrait{height:360px}}
 @media(max-width:650px){.leader-v42 .portrait{height:340px}}
+
+
+/* V4.4 final polish */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);min-height:540px;overflow:hidden}
+.hero-layout{grid-template-columns:minmax(300px,.9fr) minmax(320px,1.15fr) 400px;gap:28px;align-items:center}
+.hero-copy{max-width:none;padding:54px 0}.hero h1{font-size:58px}.hero p{font-size:18px}
+.hero-visual{height:430px;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero .booking-mini{position:relative;z-index:2;justify-self:end;width:100%;max-width:400px}
+/* Services: equal content-based cards, no forced blank vertical space */
+body:has(.page-hero h1) .section.alt>.container>.grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;align-items:stretch}
+body:has(.page-hero h1) .section.alt>.container>.grid>.card{height:100%;min-height:0}
+body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:auto;min-height:0}
+/* Excursions: imagery should tell the story */
+.excursion-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:stretch}.excursion-grid .card{height:100%}.excursion-grid .card img{height:210px;object-fit:cover}.excursion-grid .card-body{padding:22px}.excursion-grid .card p{margin-bottom:0}.excursion-note{text-align:center;color:var(--muted);margin:24px 0 8px;font-weight:600}
+/* Leadership: clean portrait above clean bio, no composite text inside photos */
+.leader-photo{overflow:hidden}.leader-v42 .portrait{height:430px;object-fit:cover;object-position:center top}
+/* Contact/footer logo treatment */
+.contact-logo{width:290px;max-width:88%;margin:0 0 24px}.contact-box{padding:28px}.contact-box .btn{margin-top:4px}.footer-brand img{width:255px;max-width:70vw;margin-bottom:6px}.footer{padding:26px 0}.footer-inner{align-items:center}
+@media(max-width:1180px){.hero-layout{grid-template-columns:1fr 1fr}.hero-visual{height:360px}.hero .booking-mini{grid-column:1/-1;justify-self:center;max-width:720px;margin-bottom:34px}.hero-copy{padding-bottom:10px}}
+@media(max-width:900px){body:has(.page-hero h1) .section.alt>.container>.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.excursion-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.hero-layout{grid-template-columns:1fr}.hero-visual{height:300px}.hero .booking-mini{grid-column:auto;max-width:none}.hero h1{font-size:46px}.excursion-grid{grid-template-columns:1fr}.excursion-grid .card img{height:230px}}
+@media(max-width:650px){body:has(.page-hero h1) .section.alt>.container>.grid{grid-template-columns:1fr}.leader-v42 .portrait{height:380px}}
+
+.lang-toggle{background:transparent;border:0;color:inherit;font:inherit;font-weight:inherit;cursor:pointer;padding:8px 4px;}
