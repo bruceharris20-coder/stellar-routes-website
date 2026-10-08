@@ -52,3 +52,22 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 @media(max-width:650px){body:has(.page-hero h1) .section.alt>.container>.grid{grid-template-columns:1fr}.leader-v42 .portrait{height:380px}}
 
 .lang-toggle{background:transparent;border:0;color:inherit;font:inherit;font-weight:inherit;cursor:pointer;padding:8px 4px;}
+
+
+/* Launch polish: leadership matches approved sample */
+.leadership-v42{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.leader-v42{display:grid;grid-template-columns:minmax(220px,42%) minmax(0,58%);background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;min-height:510px}
+.leader-photo{position:relative;padding:0;background:#fff;border-radius:0;box-shadow:none;overflow:hidden;min-height:510px}
+.leader-v42 .portrait{width:100%;height:100%;min-height:510px;object-fit:cover;object-position:center top;border-radius:0}
+.polo-logo{position:absolute;right:10px;bottom:26px;width:142px;max-width:62%;height:auto;background:rgba(255,255,255,.94);padding:4px 5px;border-radius:4px;filter:none}
+.leader-bio{padding:28px 26px;background:#fff;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;justify-content:center}
+.leader-bio h2{font-size:31px;line-height:1.05;margin:0 0 8px}.leader-bio .role{font-size:19px;margin:0 0 18px}.leader-bio p{font-size:15px;line-height:1.55;margin:6px 0}
+
+/* Excursion image labels: centered at bottom, consistent on every card */
+.excursion-image{position:relative;height:210px;overflow:hidden;background:#dfe8ee}
+.excursion-grid .card .excursion-image img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:0}
+.excursion-image:after{content:"";position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(transparent,rgba(2,19,33,.76));pointer-events:none}
+.excursion-image-title{position:absolute;left:12px;right:12px;bottom:15px;z-index:2;text-align:center;color:#fff;font-size:22px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.45)}
+
+@media(max-width:1050px){.leadership-v42{grid-template-columns:1fr}.leader-v42{grid-template-columns:300px 1fr;min-height:440px}.leader-photo,.leader-v42 .portrait{min-height:440px}.polo-logo{width:150px}}
+@media(max-width:650px){.leader-v42{grid-template-columns:1fr;min-height:0}.leader-photo{min-height:0;height:440px}.leader-v42 .portrait{height:440px;min-height:0}.leader-bio{padding:24px}.polo-logo{width:145px;bottom:20px}.excursion-image{height:230px}}
