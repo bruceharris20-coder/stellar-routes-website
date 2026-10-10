@@ -92,3 +92,13 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 .booking-mini .tabs button{cursor:pointer;transition:.18s ease}.booking-mini .tabs button:hover{background:#e3edf0}.booking-mini .tabs button.active:hover{background:var(--teal)}
 .fleet-hero-card{overflow:visible}.fleet-hero-card img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center}
 @media(max-width:720px){.booking-mini .tabs{display:grid;grid-template-columns:1fr}.booking-mini .tabs button{width:100%}.fleet-hero-card{padding:10px;overflow-x:auto}.fleet-hero-card img{min-width:720px;max-width:none}}
+
+/* V6 fleet catalog: labels are live HTML so passenger counts can never be cropped */
+.fleet-catalog{overflow:hidden!important;padding:18px 18px 14px!important}
+.fleet-catalog .fleet-vehicles-image{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:10px 10px 0 0}
+.fleet-capacity-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;padding:10px 6px 2px;text-align:center;background:#fff;color:var(--navy)}
+.fleet-capacity-grid div{min-width:0;padding:2px 3px}
+.fleet-capacity-grid strong,.fleet-capacity-grid span{display:block;white-space:normal;overflow:visible;text-overflow:clip}
+.fleet-capacity-grid strong{font-size:14px;line-height:1.15}
+.fleet-capacity-grid span{font-size:12px;line-height:1.2;margin-top:2px;color:#273b4b}
+@media(max-width:900px){.fleet-catalog{overflow-x:auto!important}.fleet-catalog .fleet-vehicles-image,.fleet-capacity-grid{min-width:980px}.fleet-capacity-grid strong{font-size:13px}.fleet-capacity-grid span{font-size:12px}}
