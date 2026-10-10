@@ -31,6 +31,15 @@ document.addEventListener('DOMContentLoaded',()=>{
  const m=document.querySelector('.menu'),l=document.querySelector('.links');if(m)m.onclick=()=>l.classList.toggle('open');
  const langBtn=document.querySelector('.lang-toggle'); if(langBtn) langBtn.addEventListener('click',()=>translatePage((localStorage.getItem('stellarLang')||'en')==='en'?'es':'en'));
  translatePage(localStorage.getItem('stellarLang')||'en');
- const mini=document.querySelector('#miniBooking');if(mini)mini.addEventListener('submit',e=>{e.preventDefault();const p=new URLSearchParams(new FormData(mini));location.href='reservation.html?'+p.toString()});
+ const mini=document.querySelector('#miniBooking');if(mini){
+ const tabs=[...mini.querySelectorAll('.tabs button')], service=mini.querySelector('input[name="service"]'), pickup=mini.querySelector('input[name="pickup"]'), dropoff=mini.querySelector('input[name="dropoff"]');
+ tabs.forEach(btn=>btn.addEventListener('click',()=>{
+   tabs.forEach(b=>b.classList.remove('active')); btn.classList.add('active'); service.value=btn.dataset.service;
+   if(btn.dataset.service==='Excursion'){ pickup.placeholder='🏨 Hotel / Pickup Location'; dropoff.placeholder='🌴 Excursion / Destination'; }
+   else if(btn.dataset.service==='Private Transportation'){ pickup.placeholder='📍 Pickup Location'; dropoff.placeholder='📍 Drop-off Location'; }
+   else { pickup.placeholder='✈ Pickup Location'; dropoff.placeholder='📍 Drop-off Location'; }
+ }));
+ mini.addEventListener('submit',e=>{e.preventDefault();const p=new URLSearchParams(new FormData(mini));location.href='reservation.html?'+p.toString()});
+}
  const form=document.querySelector('#reservationForm');if(form){const p=new URLSearchParams(location.search);p.forEach((v,k)=>{const el=form.elements[k];if(el)el.value=v});form.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(form);let lines=[];d.forEach((v,k)=>{if(v)lines.push(`${k}: ${v}`)});const subject=encodeURIComponent('Stellar Routes Reservation Request - '+(d.get('name')||'Guest'));const body=encodeURIComponent('New reservation request\n\n'+lines.join('\n'));location.href=`mailto:info@StellarRoutes.com?subject=${subject}&body=${body}`})}
 });

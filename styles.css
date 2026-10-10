@@ -87,3 +87,8 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 .home-feature-grid .card-body p{margin-top:0;flex:1}
 .home-feature-grid .card-body .btn{align-self:flex-start}
 @media(max-width:720px){.home-feature-image{height:240px}.home-feature-title{font-size:22px}}
+
+/* Final launch fixes: booking tabs + fleet capacity visibility */
+.booking-mini .tabs button{cursor:pointer;transition:.18s ease}.booking-mini .tabs button:hover{background:#e3edf0}.booking-mini .tabs button.active:hover{background:var(--teal)}
+.fleet-hero-card{overflow:visible}.fleet-hero-card img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center}
+@media(max-width:720px){.booking-mini .tabs{display:grid;grid-template-columns:1fr}.booking-mini .tabs button{width:100%}.fleet-hero-card{padding:10px;overflow-x:auto}.fleet-hero-card img{min-width:720px;max-width:none}}
