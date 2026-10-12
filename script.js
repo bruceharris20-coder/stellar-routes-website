@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded',()=>{
        const d=new FormData(form);
        const ref='SR-'+new Date().toISOString().slice(2,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
            d.set('reference',ref);
-           d.set('subject',(d.get('request_type')==='Quote'?'NEW STELLAR ROUTES QUOTE REQUEST':'NEW STELLAR ROUTES RESERVATION REQUEST')+' | '+ref+' | '+(d.get('name')||'Guest'));
+           d.set('subject',(d.get('request_type')==='Quote'?'QUOTE REQUEST':'BOOKING REQUEST')+' | '+ref+' | '+(d.get('name')||'Guest'));
        const response=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d});
        const result=await response.json();
        if(!response.ok || !result.success) throw new Error(result.message||'Submission failed');
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    contactForm.addEventListener('submit',async e=>{
      e.preventDefault(); const btn=contactForm.querySelector('button[type="submit"]'); const lang=localStorage.getItem('stellarLang')||'en'; const original=btn.textContent;
      btn.disabled=true;btn.textContent=lang==='es'?'Enviando…':'Sending…';status.className='form-status';status.textContent='';
-     try{ const d=new FormData(contactForm); const ref='SR-C-'+new Date().toISOString().slice(2,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(); d.set('reference',ref); d.set('request_type','Contact Inquiry'); d.set('subject','NEW STELLAR ROUTES CONTACT INQUIRY | '+ref+' | '+(d.get('name')||'Guest'));
+     try{ const d=new FormData(contactForm); const ref='SR-C-'+new Date().toISOString().slice(2,10).replaceAll('-','')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(); d.set('reference',ref); d.set('request_type','Contact Inquiry'); d.set('subject','CONTACT INQUIRY | '+ref+' | '+(d.get('name')||'Guest'));
        const response=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d}); const result=await response.json(); if(!response.ok||!result.success)throw new Error(result.message||'Submission failed'); contactForm.reset(); status.className='form-status success'; status.innerHTML=lang==='es'?'<strong>Gracias por contactar a Stellar Routes.</strong><br>Referencia: <strong>'+ref+'</strong><br>Hemos recibido tu mensaje. Un miembro de nuestro equipo responderá pronto.':'<strong>Thank You for Contacting Stellar Routes.</strong><br>Reference: <strong>'+ref+'</strong><br>Your message has been received. A member of our team will respond shortly.'; status.scrollIntoView({behavior:'smooth',block:'center'});
      }catch(err){status.className='form-status error';status.textContent=lang==='es'?'No pudimos enviar tu mensaje. Por favor intenta nuevamente o llámanos.':'We could not send your message. Please try again or call us.';}finally{btn.disabled=false;btn.textContent=original;}
    });
