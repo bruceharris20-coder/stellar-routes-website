@@ -41,5 +41,32 @@ document.addEventListener('DOMContentLoaded',()=>{
  }));
  mini.addEventListener('submit',e=>{e.preventDefault();const p=new URLSearchParams(new FormData(mini));location.href='reservation.html?'+p.toString()});
 }
- const form=document.querySelector('#reservationForm');if(form){const p=new URLSearchParams(location.search);p.forEach((v,k)=>{const el=form.elements[k];if(el)el.value=v});form.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(form);let lines=[];d.forEach((v,k)=>{if(v)lines.push(`${k}: ${v}`)});const subject=encodeURIComponent('Stellar Routes Reservation Request - '+(d.get('name')||'Guest'));const body=encodeURIComponent('New reservation request\n\n'+lines.join('\n'));location.href=`mailto:info@StellarRoutes.com?subject=${subject}&body=${body}`})}
+ const form=document.querySelector('#reservationForm');if(form){
+   const p=new URLSearchParams(location.search);p.forEach((v,k)=>{const el=form.elements[k];if(el)el.value=v});
+   const status=document.querySelector('#formStatus');
+   form.addEventListener('submit',async e=>{
+     e.preventDefault();
+     const btn=form.querySelector('button[type="submit"]');
+     const lang=localStorage.getItem('stellarLang')||'en';
+     const original=btn.textContent;
+     btn.disabled=true;btn.textContent=lang==='es'?'Enviando…':'Sending…';
+     status.className='form-status';status.textContent='';
+     try{
+       const d=new FormData(form);
+       d.set('subject','New Stellar Routes Reservation Request - '+(d.get('name')||'Guest'));
+       const response=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d});
+       const result=await response.json();
+       if(!response.ok || !result.success) throw new Error(result.message||'Submission failed');
+       form.reset();
+       status.className='form-status success';
+       status.innerHTML=lang==='es'
+         ? '<strong>¡Gracias! Hemos recibido tu solicitud.</strong><br>El equipo de Stellar Routes revisará los detalles de tu viaje y se comunicará contigo pronto para confirmar disponibilidad y proporcionar tu cotización.'
+         : '<strong>Thank You — Your Request Has Been Received.</strong><br>The Stellar Routes team will review your trip details and contact you shortly to confirm availability and provide your quote.';
+       status.scrollIntoView({behavior:'smooth',block:'center'});
+     }catch(err){
+       status.className='form-status error';
+       status.textContent=lang==='es'?'No pudimos enviar tu solicitud. Por favor intenta nuevamente o contáctanos en info@stellarroutes.com.':'We could not send your request. Please try again or contact us at info@stellarroutes.com.';
+     }finally{btn.disabled=false;btn.textContent=original;}
+   });
+ }
 });
