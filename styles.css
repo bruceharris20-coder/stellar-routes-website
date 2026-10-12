@@ -110,3 +110,10 @@ body:has(.page-hero h1) .section.alt>.container>.grid>.card .card-body{height:au
 .form-status.success{display:block;background:#edf8f1;border:1px solid #9bd3ad;color:#123f24}
 .form-status.error{display:block;background:#fff1f1;border:1px solid #e1a0a0;color:#721c24}
 .form-status strong{font-size:18px}
+
+/* V8 customer inquiry polish */
+.fleet-premium-v8{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;image-rendering:auto}
+.direct-form textarea{min-height:140px}
+.consent label{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--muted);font-weight:500}
+.consent input{width:auto;margin-top:3px;flex:0 0 auto}
+@media(max-width:720px){.fleet-catalog .fleet-premium-v8{min-width:760px!important}}
